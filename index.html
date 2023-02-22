@@ -27,32 +27,66 @@
             <div>
                 <p>
                     <label for="first-name">First name</label>
-                    <input type="text" id="first-name" name="user_first_name">
+                    <input type="text" id="first-name" name="user_first_name" required>
                 </p>
                 <p>
                     <label for="last-name">Last name</label>
-                    <input type="text" id="last-name" name="user_last_name">
+                    <input type="text" id="last-name" name="user_last_name" required>
                 </p>
                 <p>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="user_email">
+                    <input type="email" id="email" name="user_email" required>
                 </p>
                 <p>
                     <label for="phone">Phone number</label>
-                    <input type="tel" id="phone" name="user_phone_number">
+                    <input type="tel" id="phone" name="user_phone_number" required minlength="9">
                 </p>
                 <p>
                     <label for="pwd">Password</label>
-                    <input type="password" id="pwd" name="user_password">
+                    <input type="password" id="pwd" name="user_password" required>
                 </p>
                 <p>
                     <label for="pwd-confirm">Confirm password</label>
-                    <input type="password" id="pwd-confirm" name="user_password">
+                    <input type="password" id="pwd-confirm" name="user_password" required>
                 </p>
+                <p class="error-text"></p>
             </div>
         </fieldset>
         <button type="submit">Create Account</button>
         <p class="login">Already have an account? <a href="">Log in</a></p>
     </form>
+
+    <script>
+        const password = document.querySelector('#pwd');
+        const confirmPassword = document.querySelector('#pwd-confirm');
+        const errorText = document.querySelector('.error-text');
+        const form = document.querySelector('form');
+
+        confirmPassword.addEventListener('input', comparePasswords);
+        password.addEventListener('input', comparePasswords);
+
+        function comparePasswords() {
+            if (confirmPassword.value === password.value && confirmPassword !== '') {
+                password.classList.remove('error');
+                confirmPassword.classList.remove('error');
+                errorText.textContent = '';
+            } else {
+                password.classList.add('error');
+                confirmPassword.classList.add('error');
+                errorText.textContent = '*Passwords do not match';
+            };
+        };
+
+        form.addEventListener('submit', (event)=> {
+            if (errorText.textContent === '*Passwords do not match') {
+                event.preventDefault();
+            }
+        })
+
+
+        
+
+
+    </script>
 </body>
 </html>

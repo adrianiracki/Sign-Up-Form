@@ -10,13 +10,13 @@
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color: rgb(241, 241, 241);
     display: flex;
 }
 
 div.sidebar {
-    width: 480px;
+    width: clamp(300px, 40vw, 900px);
     height: 100vh;
     min-height: 700px;
     flex: none;
@@ -64,14 +64,15 @@ p.footer > a {
 form {
     background-color: rgb(241, 241, 241);
     height: 100vh;
+    width: 100vw;
 }
 
 div.header {
-    height: calc(25vh + 130px);
-    padding-top: 15vh;
+    height: max(280px, 25vh + 130px);
+    padding-top: 20vh;
+    padding-bottom: 1rem;
     padding-left: 40px;
-    width: 600px;
-
+    width: clamp(300px, 50vw, 900px);
 }
 
 div.header > p + p {
@@ -86,7 +87,6 @@ fieldset > h2 {
 
 fieldset {
     height: auto;
-    width: 800px;
     padding-left: 40px;
     padding-top: 30px;
     padding-bottom: 40px;
@@ -100,12 +100,21 @@ fieldset p {
     width: 250px;
     margin-top: 20px;
     margin-right: 40px;
+    flex: 1 1 auto;
 }
 
 fieldset > div {
-    width: 600px;
+    width: clamp(300px, 50vw, 900px);
     display: flex;
     flex-wrap: wrap;
+    position: relative;
+}
+
+div > p.error-text {
+    position: absolute;
+    bottom: -1rem;
+    font-size: 0.75rem;
+    color: rgb(189, 9, 9);
 }
 
 p > label {
@@ -124,6 +133,17 @@ p > input {
     padding-left: 1rem;
 }
 
+p > input:focus {
+    outline: none;
+    border-color: blue;
+    box-shadow: 1px 1px 5px gray;
+}
+
+p > input.error {
+    outline: none;
+    border-color: rgb(189, 9, 9);
+}
+
 button {
     margin-left: 40px;
     width: 200px;
@@ -139,6 +159,10 @@ button {
     margin-bottom: 30px;
 }
 
+button:active {
+    background-color: rgb(133, 75, 24);
+}
+
 p.login {
     margin-left: 40px;
 }
@@ -146,3 +170,4 @@ p.login {
 p.login > a {
     color: rgb(188,107,34);
 }
+
