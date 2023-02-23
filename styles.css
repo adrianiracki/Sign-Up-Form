@@ -171,3 +171,58 @@ p.login > a {
     color: rgb(188,107,34);
 }
 
+@media only screen and (max-width: 700px) {
+
+    body {
+        flex-direction: column;
+    }
+
+    div.sidebar {
+        height: 25vh;
+        min-height: 160px;
+        width: 100vw;
+        background-size: 100%;
+        background-position: 0 -200px;  
+    }
+
+    div.logo-container {
+        width: 100vw;
+        margin-top: 5vh;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    div.header {
+        padding: 50px;
+        margin: 0 auto;
+        height: auto;
+        width: auto;
+    }
+
+    form {
+        height: auto;
+    }
+
+    fieldset {
+        padding: 50px;
+    }
+
+    fieldset > div {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    fieldset p {
+        width: auto;
+    }
+
+    button {
+        margin-left: 50px;
+    }
+
+    p.login {
+        margin-left: 50px;
+    }
+
+}
+
